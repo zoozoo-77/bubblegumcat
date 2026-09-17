@@ -19,7 +19,7 @@ blowButton.addEventListener("pointerdown", function (event) {
 
     blowing = true;
 
-    cat.src = "./images/cat-normal.png";
+    cat.src = "./cat-normal.png";
 
     increaseBubble();
 });
@@ -35,7 +35,7 @@ blowButton.addEventListener("pointerup", function () {
 
     // 100% 전에 손을 뗀 경우
     if (percentage > 0 && percentage < 100) {
-        cat.src = "./images/cat-disappointed.png";
+        cat.src = "./cat-disappointed.png";
 
         bubble.classList.remove("explode");
         bubble.classList.add("shrink");
@@ -75,7 +75,7 @@ function explodeBubble() {
     blowing = false;
     finished = true;
 
-    cat.src = "./images/cat-explode.png";
+    cat.src = "./cat-explode.png";
 
     bubble.classList.remove("shrink");
     bubble.classList.add("explode");
@@ -90,7 +90,7 @@ function resetGame() {
     blowing = false;
     finished = false;
 
-    cat.src = "./images/cat-normal.png";
+    cat.src = "./cat-normal.png";
 
     bubble.classList.remove("shrink");
     bubble.classList.remove("explode");
