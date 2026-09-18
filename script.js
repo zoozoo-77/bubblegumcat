@@ -43,6 +43,14 @@ blowButton.addEventListener("pointerup", function () {
         finished = true;
         blowButton.textContent = "처음으로 돌아가기";
     }
+
+    // 90~110%에서 손을 뗀 경우
+    if (percentage >= 90 && percentage <= 110)  {
+        cat.src = "./cat-success.png";
+
+        finished = true;
+        blowButton.textContent ="처음으로 돌아가기"
+    }
 });
 
 
@@ -61,7 +69,7 @@ function increaseBubble() {
 
 
     // 100%를 넘으면 폭발
-    if (percentage > 100) {
+    if (percentage > 110) {
         explodeBubble();
         return;
     }
