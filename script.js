@@ -1,3 +1,4 @@
+const successMessage = document.getElementById("successMessage");
 const bubble = document.getElementById("bubble");
 const blowButton = document.getElementById("blowButton");
 const cat = document.getElementById("cat");
@@ -33,8 +34,22 @@ blowButton.addEventListener("pointerup", function () {
 
     blowing = false;
 
-    // 100% 전에 손을 뗀 경우
-    if (percentage > 0 && percentage < 100) {
+    // 90~110% 성공
+    if (percentage >= 90 && percentage <= 110) {
+        cat.src = "./cat-success.png";
+
+        // 풍선껌 숨기기 
+        bubble.style.display = "none";
+
+        // 성공 메시지 보여주기
+        successMessage.classList.add("show");
+
+        finished = true;
+        blowButton.textContent = "처음으로 돌아가기";
+    }
+
+    // 90% 전에 손을 뗀 경우
+    else if (percentage > 0 && percentage < 90) {
         cat.src = "./cat-disappointed.png";
 
         bubble.classList.remove("explode");
@@ -59,9 +74,8 @@ function increaseBubble() {
     bubble.style.width = size + "px";
     bubble.style.height = size + "px";
 
-
-    // 100%를 넘으면 폭발
-    if (percentage > 100) {
+    // 110%를 넘으면 폭발
+    if (percentage > 110) {
         explodeBubble();
         return;
     }
@@ -95,8 +109,11 @@ function resetGame() {
     bubble.classList.remove("shrink");
     bubble.classList.remove("explode");
 
+    bubble.style.display = "block";
     bubble.style.width = "20px";
     bubble.style.height = "20px";
+
+    successMessage.classList.remove("show");
 
     blowButton.textContent = "불기";
 }
